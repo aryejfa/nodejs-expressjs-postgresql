@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../components/header') %>
+  <body>
+    <% if(dataTokenJWT){ %> <%- include('../../components/navbar_user') %> <%
+    }else{ %> <%- include('../../components/navbar') %> <% } %>
+    <h2>Form Create Users</h2>
+    <form method="post" action="/users">
+      <div class="input-group">
+        <label>
+          <input type="text" name="name" />
+        </label>
+      </div>
+      <div class="input-group">
+        <label>
+          <input type="email" name="email" />
+        </label>
+      </div>
+      <div class="input-group">
+        <label>
+          <input type="password" name="password" />
+        </label>
+      </div>
+      <button type="submit">Submit</button>
+      <a href="/users">Back</a>
+    </form>
+    <%- include('../../components/footer') %>
+  </body>
+</html>

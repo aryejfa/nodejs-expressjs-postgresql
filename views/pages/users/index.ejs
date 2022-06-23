@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../components/header') %>
+  <body>
+    <% if(dataTokenJWT){ %> <%- include('../../components/navbar_user') %> <%
+    }else{ %> <%- include('../../components/navbar') %> <% } %>
+    <h2>Data Users <%=users.length%></h2>
+
+    <a href="/users/create">Create</a>
+    <form action="/users">
+      <div class="input-group">
+        <label>
+          <input type="text" name="keyword" />
+        </label>
+      </div>
+      <button type="submit">Search</button>
+    </form>
+    <ul>
+      <% if(users.length > 0){ %> <% users.forEach((user) => { %>
+      <li>
+        <a href="/users/show/<%=user.id%>"> <%=user.name.toUpperCase() %> </a>
+      </li>
+      <% }) %> <% }else{ %>
+      <li>Data empty</li>
+      <% } %>
+    </ul>
+    <%- include('../../components/footer') %>
+  </body>
+</html>

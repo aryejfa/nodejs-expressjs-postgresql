@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../components/header') %>
+  <body>
+    <% if(dataTokenJWT){ %> <%- include('../../components/navbar_user') %> <%
+    }else{ %> <%- include('../../components/navbar') %> <% } %>
+    <h2>Form Create Users</h2>
+    <a href="/users">Back</a>
+    <form method="post" action="/users_update">
+      <div class="input-group">
+        <label>
+          <input type="hidden" name="id" value="<%=users.id %>" />
+          <input type="text" name="name" value="<%=users.name %>" />
+        </label>
+      </div>
+      <div class="input-group">
+        <label>
+          <input type="email" name="email" value="<%=users.email %>" />
+        </label>
+      </div>
+      <button type="submit">Submit</button>
+      <a href="/delete/<%=users.id %>">Delete</a>
+    </form>
+    <%- include('../../components/footer') %>
+  </body>
+</html>

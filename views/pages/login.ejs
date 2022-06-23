@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../components/header') %>
+  <body>
+    <% if(dataTokenJWT){ %> <%- include('../components/navbar_user') %> <%
+    }else{ %> <%- include('../components/navbar') %> <% } %>
+    <h2>Login</h2>
+    <form action="/login" method="post">
+      <div class="input-group">
+        <label>
+          <input type="text" name="email" />
+        </label>
+      </div>
+      <div class="input-group">
+        <label>
+          <input type="password" name="password" />
+        </label>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <%- include('../components/footer') %>
+  </body>
+</html>
