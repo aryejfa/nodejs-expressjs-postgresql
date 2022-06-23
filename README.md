@@ -1,2 +1,2 @@
-# nodejs-expressjs-mongodb
-nodejs expressjs mongodb
+# nodejs-expressjs-postgresql
+nodejs expressjs postgresql
