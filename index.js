@@ -1,6 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3009;
+const port = process.env.PORT_EXPRESS;
 const routerUsers = require("./router/users");
 const jsonwebtoken = require("jsonwebtoken");
 
