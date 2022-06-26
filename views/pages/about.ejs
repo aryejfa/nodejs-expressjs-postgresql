@@ -4,7 +4,13 @@
   <body>
     <% if(dataTokenJWT){ %> <%- include('../components/navbar_user') %> <%
     }else{ %> <%- include('../components/navbar') %> <% } %>
-    <h2>About</h2>
+    <div
+      class="mx-auto mt-8 w-full max-w-container px-4 sm:px-6 lg:px-8 text-center"
+    >
+      <h2>
+        ABOUT - Node JS, Express, JWT, Aes256, Winston, Redis, SQL (PostgreSQL)
+      </h2>
+    </div>
     <%- include('../components/footer') %>
   </body>
 </html>

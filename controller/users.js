@@ -25,7 +25,7 @@ module.exports = {
   login: async (req, res) => {
     const dataTokenJWT = await RedisClient.get(redisKey);
 
-    res.render("pages/login", { dataTokenJWT });
+    res.render("pages/login", { dataTokenJWT, page: req.url });
   },
   sign_in: (req, res) => {
     let responseReturn = new ResponseClass();
@@ -72,7 +72,7 @@ module.exports = {
               redisKey,
               JSON.stringify(enkrip),
               {
-                EX: 60 * 24,
+                EX: (60 * 60) * 24,
               }
             );
             if (insertRedis) {
@@ -117,6 +117,7 @@ module.exports = {
         responseReturn.data = results.rows;
 
         res.render("pages/users/index", {
+          page: req.url,
           users: responseReturn.data,
           dataTokenJWT,
         });
@@ -138,6 +139,7 @@ module.exports = {
           res.render("pages/users/index", {
             users: responseReturn.data,
             dataTokenJWT,
+            page: req.url,
           });
         }
       );
@@ -146,7 +148,7 @@ module.exports = {
   create: async (req, res) => {
     const dataTokenJWT = await RedisClient.get(redisKey);
 
-    res.render("pages/users/create", { dataTokenJWT });
+    res.render("pages/users/create", { dataTokenJWT, page: req.url });
   },
   store: (req, res) => {
     const name = req.body.name;
@@ -185,6 +187,7 @@ module.exports = {
       res.render("pages/users/show", {
         users: responseReturn.data,
         dataTokenJWT,
+        page: req.url,
       });
     });
   },
