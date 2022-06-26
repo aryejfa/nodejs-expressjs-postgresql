@@ -1,64 +1,68 @@
-<div class="relative bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div
-      class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10"
+<nav
+  class="flex items-center justify-between flex-wrap bg-white p-6 fixed w-full z-10 top-0 border-b-2 border-gray-100"
+>
+  <div class="flex justify-start lg:w-0 lg:flex-1">
+    <a href="/">
+      <span class="sr-only">HOME</span>
+      <img
+        class="h-8 w-auto sm:h-10"
+        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+        alt=""
+      />
+    </a>
+  </div>
+
+  <div class="block lg:hidden">
+    <button
+      id="nav-toggle"
+      class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-500 hover:border-gray-500"
     >
-      <div class="flex justify-start lg:w-0 lg:flex-1">
-        <a href="/">
-          <span class="sr-only">HOME</span>
-          <img
-            class="h-8 w-auto sm:h-10"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-            alt=""
-          />
-        </a>
-      </div>
-      <div class="-mr-2 -my-2 md:hidden">
-        <button
-          type="button"
-          class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-          aria-expanded="false"
+      <svg
+        class="fill-current h-3 w-3"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>Menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+      </svg>
+    </button>
+  </div>
+
+  <div
+    class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
+    id="nav-content"
+  >
+    <ul class="list-reset lg:flex justify-end flex-1 items-center">
+      <li class="mr-3">
+        <a class="<% if(page === "/"){ %> font-bold <% } %> inline-block text-indigo-600 hover:text-indigo-900 py-2 px-4" href="/"
+          >HOME</a
         >
-          <span class="sr-only">Open menu</span>
-          <svg
-            class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </div>
-      <nav class="hidden md:flex space-x-10">
+      </li>
+      <li class="mr-3">
         <a
-          href="/"
-          class="<% if(page === "/"){ %> text-gray-900 <% } %> text-base font-medium text-gray-500 hover:text-gray-900"
-        >
-          HOME
-        </a>
-        <a
+          class="<% if(page === "/about"){ %> font-bold <% } %> inline-block text-indigo-600 hover:text-indigo-900 py-2 px-4"
           href="/about"
-          class="<% if(page === "/about"){ %> text-gray-900 <% } %> text-base font-medium text-gray-500 hover:text-gray-900"
+          >ABOUT</a
         >
-          ABOUT
-        </a>
-      </nav>
-      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+      </li>
+      <li class="mr-3">
         <a
           href="/login"
-          class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+          class="ml-3 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
         >
           LOGIN
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>
+
+<!--Container-->
+<div class="container shadow-lg mx-auto bg-white mt-24 md:mt-18"></div>
+
+<script>
+  //Javascript to toggle the menu
+  document.getElementById("nav-toggle").onclick = function () {
+    document.getElementById("nav-content").classList.toggle("hidden");
+  };
+</script>

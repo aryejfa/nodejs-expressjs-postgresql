@@ -5,15 +5,15 @@
     <% if(dataTokenJWT){ %> <%- include('../../components/navbar_user') %> <%
     }else{ %> <%- include('../../components/navbar') %> <% } %>
 
-    <div class="container justify-center mx-auto mt-8 px-8">
+    <div class="container justify-center mx-auto mt-8 px-8 pt-1">
       <div
-        class="mx-auto mt-8 w-full max-w-container px-4 sm:px-6 lg:px-8 text-center mb-2"
+        class="mx-auto mt-8 w-full max-w-container px-4 sm:px-6 lg:px-8 text-center mb-2 font-bold"
       >
-        <h2>USERS</h2>
+        <h2>DATA USER</h2>
       </div>
       <div class="w-full">
         <div class="border-b border-gray-200 shadow">
-          <div class="px-6 mb-1 pt-4 text-right">
+          <div class="px-6 mb-4 pt-4 text-right">
             <a
               class="px-4 py-1 text-sm text-white bg-yellow-400 rounded"
               href="/users/create"
@@ -25,7 +25,7 @@
               <div class="flex border-2 border-gray-200 rounded">
                 <input
                   type="text"
-                  class="px-4 py-1 w-96"
+                  class="px-4 py-1 sm:w-full lg:w-96"
                   placeholder="Search..."
                   id="keyword"
                   name="keyword"
@@ -48,13 +48,58 @@
               </div>
             </div>
           </form>
-          <div class="overflow-x-auto">
+          <div class="block lg:hidden">
+            <table class="container">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-2 text-xs text-gray-500">
+                    Name / Email
+                  </th>
+                  <th class="px-6 py-2 text-xs text-gray-500">Action</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                <% if(users.length > 0){ %> <% users.forEach((user) => { %>
+                <tr class="whitespace-nowrap">
+                  <td class="px-6 py-4 text-center">
+                    <div class="text-sm text-gray-900">
+                      <%=user.name.toUpperCase() %>
+                      <br/>
+                      <%=user.email %>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <a
+                      href="/users/show/<%=user.id%>"
+                      class="px-4 py-1 text-sm text-white bg-blue-400 rounded inline-flex mb-1"
+                      >Update</a
+                    >
+                    <br/>
+                    <a
+                      href="/delete/<%=user.id%>"
+                      onclick="return confirm('Are you sure want to delete?')"
+                      class="px-4 py-1 text-sm text-white bg-red-400 rounded"
+                      >Delete</a
+                    >
+                  </td>
+                </tr>
+                <% }) %> <% }else{ %>
+                <tr class="whitespace-nowrap">
+                  <td class="px-6 py-4">
+                    <div class="text-sm text-gray-900">Data empty</div>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+          <div class="hidden md:block overflow-x-auto">
             <table class="container">
               <thead class="bg-gray-50">
                 <tr>
                   <th class="px-6 py-2 text-xs text-gray-500">Name</th>
                   <th class="px-6 py-2 text-xs text-gray-500">Email</th>
-                  <th class="px-6 py-2 text-xs text-gray-500">Edit</th>
+                  <th class="px-6 py-2 text-xs text-gray-500">Update</th>
                   <th class="px-6 py-2 text-xs text-gray-500">Delete</th>
                 </tr>
               </thead>
@@ -73,7 +118,7 @@
                     <a
                       href="/users/show/<%=user.id%>"
                       class="px-4 py-1 text-sm text-white bg-blue-400 rounded"
-                      >Edit</a
+                      >Update</a
                     >
                   </td>
                   <td class="px-6 py-4 text-center">
