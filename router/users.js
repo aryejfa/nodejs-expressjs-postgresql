@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../controller/users");
+const userController = require("../hmvc/users/controller/users");
 const Upload = require("../utils/Upload");
 
 router.route("/login").get(userController.login).post(userController.sign_in);

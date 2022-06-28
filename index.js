@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
 // MIDDLEWARE
 
 // EJS TEMPLATE
-app.set("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "/hmvc/users/views"));
 
 app.set("view engine", "ejs");
 

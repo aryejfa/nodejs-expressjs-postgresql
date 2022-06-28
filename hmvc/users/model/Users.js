@@ -1,4 +1,4 @@
-const pool = require("../utils/SqlConfig");
+const pool = require("../../../utils/SqlConfig");
 
 const allData = async (data, table, condition) => {
   try {
