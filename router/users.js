@@ -1,12 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controller/users");
+const Upload = require("../utils/Upload");
 
 router.route("/login").get(userController.login).post(userController.sign_in);
 router
   .route("/users")
   .get(userController.loginRequired, userController.index)
-  .post(userController.loginRequired, userController.store);
+  .post(
+    Upload.single("image"),
+    userController.loginRequired,
+    userController.store
+  );
 router.get(
   "/users/create",
   userController.loginRequired,
@@ -19,6 +24,7 @@ router.get(
 );
 router.post(
   "/users_update",
+  Upload.single("image"),
   userController.loginRequired,
   userController.update
 );
@@ -27,9 +33,6 @@ router.get(
   userController.loginRequired,
   userController.delete
 );
-router.get(
-  "/logout",
-  userController.logout
-);
+router.get("/logout", userController.logout);
 
 module.exports = router;

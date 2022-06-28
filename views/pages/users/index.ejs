@@ -48,13 +48,11 @@
               </div>
             </div>
           </form>
-          <div class="block lg:hidden">
+          <div class="block lg:hidden overflow-x-auto">
             <table class="container">
               <thead class="bg-gray-50">
                 <tr>
-                  <th class="px-6 py-2 text-xs text-gray-500">
-                    Name / Email
-                  </th>
+                  <th class="px-6 py-2 text-xs text-gray-500">Name / Email</th>
                   <th class="px-6 py-2 text-xs text-gray-500">Action</th>
                 </tr>
               </thead>
@@ -62,10 +60,14 @@
                 <% if(users.length > 0){ %> <% users.forEach((user) => { %>
                 <tr class="whitespace-nowrap">
                   <td class="px-6 py-4 text-center">
-                    <div class="text-sm text-gray-900">
+                    <div
+                      class="text-xs text-gray-900 flex flex-wrap justify-center"
+                    >
                       <%=user.name.toUpperCase() %>
-                      <br/>
+                      <br />
                       <%=user.email %>
+                      <br />
+                      <img class="w-12 mt-2" src="/uploads/<%=user.img%>" />
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">
@@ -74,7 +76,7 @@
                       class="px-4 py-1 text-sm text-white bg-blue-400 rounded inline-flex mb-1"
                       >Update</a
                     >
-                    <br/>
+                    <br />
                     <a
                       href="/delete/<%=user.id%>"
                       onclick="return confirm('Are you sure want to delete?')"
@@ -98,6 +100,7 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th class="px-6 py-2 text-xs text-gray-500">Name</th>
+                  <th class="px-6 py-2 text-xs text-gray-500">Profile</th>
                   <th class="px-6 py-2 text-xs text-gray-500">Email</th>
                   <th class="px-6 py-2 text-xs text-gray-500">Update</th>
                   <th class="px-6 py-2 text-xs text-gray-500">Delete</th>
@@ -109,6 +112,13 @@
                   <td class="px-6 py-4 text-center">
                     <div class="text-sm text-gray-900">
                       <%=user.name.toUpperCase() %>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <div
+                      class="text-sm text-gray-500 flex flex-wrap justify-center"
+                    >
+                      <img class="w-12" src="/uploads/<%=user.img%>" />
                     </div>
                   </td>
                   <td class="px-6 py-4 text-center">

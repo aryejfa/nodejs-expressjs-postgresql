@@ -8,6 +8,8 @@ const jsonwebtoken = require("jsonwebtoken");
 const RedisClient = require("./utils/Redis");
 const redisKey = "redisTokenJWT";
 
+var path = require("path");
+
 // PERMISSION BODY
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,9 +36,12 @@ app.use(function (req, res, next) {
 // MIDDLEWARE
 
 // EJS TEMPLATE
+app.set("views", path.join(__dirname, "/views"));
+
 app.set("view engine", "ejs");
 
 app.use("/assets", express.static("public"));
+app.use("/uploads", express.static("public/uploads"));
 // EJS TEMPLATE
 
 // ROUTE

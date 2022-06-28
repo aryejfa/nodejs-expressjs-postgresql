@@ -13,6 +13,7 @@
       <form
         method="post"
         action="/users_update"
+        enctype="multipart/form-data"
         class="bg-white shadow-md rounded px-4 pt-6 pb-8 mb-4"
       >
         <div class="mb-4">
@@ -28,6 +29,19 @@
             name="name"
             value="<%=users.name %>"
             required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+            Profile
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="image"
+            type="file"
+            placeholder="Profile"
+            name="image"
+            accept="image/*"
           />
         </div>
         <div class="mb-4">
